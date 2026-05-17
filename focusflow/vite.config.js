@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  
+  base: "/Focus-Flow/",
+
   test: {
     globals: true,
     environment: "jsdom",
