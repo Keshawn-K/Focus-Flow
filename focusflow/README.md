@@ -16,7 +16,7 @@ FocusFlow is a productivity web application built with React and Supabase that h
 
 
 
-# Technologies Used
+# Technology Used
 
 - React
 - React Router
