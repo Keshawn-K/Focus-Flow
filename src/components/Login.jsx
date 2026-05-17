@@ -2,7 +2,6 @@ import { useState } from "react"
 import { supabase } from "../supabaseClient"
 import { useNavigate } from "react-router-dom"
 
-// Login page component
 const Login = () => {
   const navigate = useNavigate()
 
