@@ -1,9 +1,10 @@
-// Import React hook for managing state
 import { useState } from "react"
 import { supabase } from "../supabaseClient"
+import { useNavigate } from "react-router-dom"
 
 // Login page component
 const Login = () => {
+  const navigate = useNavigate()
 
   // Store email input value
   const [email, setEmail] = useState("")
@@ -33,6 +34,9 @@ const handleLogin = async (event) => {
   console.log("Logged in user:", data)
 
   alert("Login successful!")
+  
+  // Redirect to dashboard
+  navigate("/dashboard")
 }
 
   return (
