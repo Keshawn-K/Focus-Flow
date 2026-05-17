@@ -20,19 +20,18 @@ const Navbar = () => {
         <div className="flex gap-4">
 
           {/* Home link */}
-          <Link
-            to="/"
-            className="hover:text-blue-400 transition"
-          >
+          <Link to="/" className="hover:text-blue-400 transition">
             Home
           </Link>
 
           {/* Login link */}
-          <Link
-            to="/login"
-            className="hover:text-blue-400 transition"
-          >
+          <Link to="/login" className="hover:text-blue-400 transition">
             Login
+          </Link>
+
+          {/* Signup link */}
+          <Link to="/signup" className="hover:text-blue-400 transition">
+            Sign Up
           </Link>
 
         </div>
