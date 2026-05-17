@@ -1,8 +1,26 @@
 // Import React state hook
 import { useState, useRef } from "react"
 
+import { supabase } from "../supabaseClient"
+
 // Focus Timer component
 const FocusTimer = () => {
+    const saveSession = async () => {
+
+  if (seconds === 0) return
+
+  const { error } = await supabase
+    .from("focus_sessions")
+    .insert([
+      { duration: seconds }
+    ])
+
+  if (error) {
+    alert("Failed to save session")
+  } else {
+    alert("Session saved!")
+  }
+}
 
   // Track time in seconds
   const [seconds, setSeconds] = useState(0)
@@ -42,6 +60,7 @@ const FocusTimer = () => {
     setSeconds(0)
   }
 
+
   // Convert seconds into MM:SS format
   const formatTime = (totalSeconds) => {
 
@@ -65,23 +84,26 @@ const FocusTimer = () => {
 
         <button
           onClick={startTimer}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           Start
         </button>
 
         <button
           onClick={stopTimer}
-          className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-        >
+          className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
           Stop
         </button>
 
         <button
           onClick={resetTimer}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-        >
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
           Reset
+        </button>
+
+        <button
+          onClick={saveSession}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Save Session
         </button>
 
       </div>
