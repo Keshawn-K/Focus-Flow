@@ -10,6 +10,9 @@ import { useNavigate } from "react-router-dom"
 // Import focus timer component
 import FocusTimer from "./FocusTimer"
 
+ // Import session list component
+import SessionList from "./SessionList"
+
 // Dashboard page component
 const Dashboard = () => {
 
@@ -80,6 +83,8 @@ const Dashboard = () => {
         <div className="mt-8">
           <FocusTimer />
         </div>
+
+        <SessionList />
 
       </div>
 
