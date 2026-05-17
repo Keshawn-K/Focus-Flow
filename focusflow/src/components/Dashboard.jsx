@@ -7,6 +7,9 @@ import { supabase } from "../supabaseClient"
 // Import navigation tool from React Router
 import { useNavigate } from "react-router-dom"
 
+// Import focus timer component
+import FocusTimer from "./FocusTimer"
+
 // Dashboard page component
 const Dashboard = () => {
 
@@ -72,6 +75,11 @@ const Dashboard = () => {
         <p className="text-slate-600">
           Your timer and session tracking tools will go here.
         </p>
+
+        {/* Focus Timer Component */}
+        <div className="mt-8">
+          <FocusTimer />
+        </div>
 
       </div>
 
