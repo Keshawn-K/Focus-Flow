@@ -1,5 +1,40 @@
+// Import React hook for managing state
+import { useState } from "react"
+import { supabase } from "../supabaseClient"
+
 // Login page component
 const Login = () => {
+
+  // Store email input value
+  const [email, setEmail] = useState("")
+
+  // Store password input value
+  const [password, setPassword] = useState("")
+
+  // Handle form submission
+const handleLogin = async (event) => {
+
+  // Prevent page refresh
+  event.preventDefault()
+
+  // Attempt login with Supabase
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
+
+  // Handle errors
+  if (error) {
+    alert(error.message)
+    return
+  }
+
+  // Successful login
+  console.log("Logged in user:", data)
+
+  alert("Login successful!")
+}
+
   return (
 
     // Full screen container
@@ -14,10 +49,14 @@ const Login = () => {
         </h1>
 
         {/* Login form */}
-        <form className="space-y-4">
+        <form
+          className="space-y-4"
+          onSubmit={handleLogin}
+        >
 
-          {/* Email input */}
+          {/* Email field */}
           <div>
+
             <label className="block mb-1 text-slate-700">
               Email
             </label>
@@ -25,12 +64,16 @@ const Login = () => {
             <input
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               className="w-full border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+
           </div>
 
-          {/* Password input */}
+          {/* Password field */}
           <div>
+
             <label className="block mb-1 text-slate-700">
               Password
             </label>
@@ -38,8 +81,11 @@ const Login = () => {
             <input
               type="password"
               placeholder="Enter your password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               className="w-full border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+
           </div>
 
           {/* Login button */}
