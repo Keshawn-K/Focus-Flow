@@ -16,10 +16,15 @@ const SessionList = () => {
     const fetchSessions = async () => {
 
       // Get data from Supabase table
-      const { data, error } = await supabase
-        .from("focus_sessions")
-        .select("*")
-        .order("created_at", { ascending: false })
+      const {
+  data: { user },
+} = await supabase.auth.getUser()
+
+const { data, error } = await supabase
+  .from("focus_sessions")
+  .select("*")
+  .eq("user_id", user.id)
+  .order("created_at", { ascending: false })
 
       // Handle successful fetch
       if (!error) {

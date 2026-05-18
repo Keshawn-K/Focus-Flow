@@ -12,7 +12,7 @@ const FocusTimer = () => {
   const { error } = await supabase
     .from("focus_sessions")
     .insert([
-      { duration: seconds }
+      { duration: seconds, user_id: user.id }
     ])
 
   if (error) {
