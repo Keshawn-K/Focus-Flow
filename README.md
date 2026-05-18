@@ -4,7 +4,7 @@ FocusFlow is a productivity web application built with React and Supabase that h
 
 
 
-# Features
+# Features of FocusFlow
 
 - User authentication (Sign Up / Login / Logout)
 - Protected dashboard access
